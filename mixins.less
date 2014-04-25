@@ -1,0 +1,199 @@
+.size(@width, @height) {
+  height:@height;
+  width:@width;
+}
+
+/* Shapes
+--------------------------------------------------------*/
+.circle(@size, @bg:#000) {
+  .size(@size, @size);
+  .border-radius(@size);
+  background:@bg;
+}
+
+.oval(@size, @bg:#000) {
+  @half: @size / 2;
+  .size(@size, @half);
+  .border-radius("@{size} / @{half}");
+  background:@bg;
+}
+
+.square(@size, @bg:#000) {
+  .size(@size, @size);
+  background:@bg;
+}
+
+/**
+ * Remove apperance of form elements
+ * @prop {value} - Property value
+ */
+.appearance(@prop: none) {
+  .prefix(appearance, @prop);
+}
+
+/**
+ * Add a border radius to element
+ * @radius {px} - Border radius
+ */
+.border-radius(@radius: 3px) {
+  .prefix(border-radius, "@{radius}");
+}
+
+/**
+ * Adds a shadow to element (if shadow is inner use "inner-shadow")
+ * @shadow {string} - Shadow string
+ */
+.box-shadow(@shadow) {
+  .prefix(box-shadow, @shadow);
+}
+
+/**
+ * Set box model of element
+ * @type {string} - Box model type
+ */
+.box-sizing(@type: border-box) {
+  .prefix(box-sizing, @type);
+}
+
+/**
+ * Position content
+ * @x {px,%} - x-positioning (-50% to center if target element is positioned left:50%)
+ * @y {px,%} - y-positioning (-50% to center if target element is positioned top:50%)
+ */
+.centered(@x,@y) {
+  .prefix(transform, "translateX(@{x}) translateY(@{y})");
+}
+
+.center(@coord, @x:0) when (@coord = x) {
+  .centered(-50%,0);
+  .position(top, left, @x, 50%);
+}
+
+.center(@coord, @y:0) when (@coord = y) {
+  .centered(0,-50%);
+  .position(top, left, 50%, @y);
+}
+
+.center(@coord) when (@coord = both) {
+  .centered(-50%,-50%);
+  .position(top, left, 50%, 50%);
+}
+
+/**
+ * Sets font-size in rem and px-fallback for IE8
+ * @size {px} - Pixel size
+ */
+.font-size(@size) {
+  @rem: (@size / 10);
+  font-size: ~"@{size}px";
+  font-size: ~"@{rem}rem";
+}
+
+/**
+ * Gives element an inner shadow
+ * @shadow {string} - Shadow string
+ */
+.inner-shadow(@shadow: "1px 1px 0px rgba(0,0,0,1)") {
+  .prefix(box-shadow, "inset @{shadow}");
+}
+
+/**
+ * Makes element transparent
+ * @opacity {int} - Opacity in percentage
+ */
+.opacity(@opacity) {
+  opacity: @opacity/100;
+  filter:~"alpha(opacity=@{opacity})";
+}
+
+/**
+ * Add all browser prefixes
+ * @property {string} - What type of property
+ * @value {string, value} - Arguments 
+ */
+.prefix(@property, @value) {
+  -:~";-webkit-@{property}: @{value}; -moz-@{property}: @{value}; -ms-@{property}: @{value}; -o-@{property}: @{value}; @{property}: @{value}";
+}
+
+/**
+ * Positioning helpers
+ * @direction1 {string} - Point to position element from
+ * @direction2 {string} - Point to position element from
+ * @position1 {px} - Amount to move from direction1
+ * @position2 {px} - Amount to move from direction2
+ */
+.position(@direction1, @direction2, @position1:0, @position2:0) {
+  @{direction1}: @position1;
+  @{direction2}: @position2;
+  position: absolute;
+}
+
+/**
+ * Rotate element
+ * @angle {deg} - Angle in degrees
+ */
+.rotate(@angle) {
+  .prefix("transform", "rotate(@{angle})");
+}
+
+/**
+ * Adds text overflow properties CSS
+ */
+.text-overflow() {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+/**
+ * Make triangles
+ * @direction {string} - Pointing direction (switches directions for it to point the right way)
+ * @size {px} - Size of triangle 
+ * @color {hex, rgb} - Color of triangle
+ */
+.triangle-base() {
+  content:"";
+  display:inline-block;
+  height:0;
+  width:0;
+}
+
+.triangle(@direction, @size, @color) when (@direction = up), (@direction = down) {
+  @dir: ~`(function(direction) { if(direction === 'up') { return 'bottom'; } else { return 'top'; }})( '@{direction}')`;
+  .triangle-base();
+  border-right: @size solid transparent;
+  border-@{dir}: @size solid @color;
+  border-left: @size solid transparent;
+}
+
+.triangle(@direction, @size, @color) when (@direction = right), (@direction = left) {
+  @dir: ~`(function(direction) { if(direction === 'left') { return 'right'; } else { return 'left'; }})( '@{direction}')`;
+  .triangle-base();
+  border-top: @size solid transparent;
+  border-bottom: @size solid transparent;
+  border-@{dir}: @size solid @color;
+}
+
+/**
+ * Corner triangles
+ * @direction1 {string} - Direction top or bottom
+ * @direction2 {string} - Direction right or left (switches input left to right for arrow to actually point left)
+ * @size {px} - Size of triangle
+ * @color {hex, rgb} - Color of triangle
+ */
+.triangle-corner(@direction1, @direction2, @size, @color) {
+  @dir: ~`(function(direction2) { if(direction2 === 'right') { return 'left'; } else { return 'right'; }})( '@{direction2}')`;
+  .triangle-base();
+  border-@{direction1}: @size solid @color;
+  border-@{dir}: @size solid transparent;
+}
+
+/**
+ * Adds transitions
+ * @type {string} - All or specific selector to transition
+ * @time {s} - Time of transition
+ * @animate {string} - Type of animation
+ */
+.transition(@type: all, @time: 300ms, @animate: ease) {
+  .prefix("transition", @type @time @animate);
+}
