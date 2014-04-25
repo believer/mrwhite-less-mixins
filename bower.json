@@ -1,15 +1,15 @@
 {
-  "name": "less-mixins",
+  "name": "mrwhite-less-mixins",
   "version": "0.1.0",
   "authors": [
     "Rickard Laurin <rickard.laurin@iteam.se>"
   ],
-  "description": "A collection of mixins for usage with LESS",
+  "description": "A collection of mixins for use with LESS",
   "main": "mixins.less",
   "keywords": [
     "less",
     "mixins"
   ],
   "license": "MIT",
-  "homepage": "http://rickardlaurin.ghost.io"
+  "homepage": "https://github.com/believer/mrwhite-less-mixins"
 }
