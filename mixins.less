@@ -1,24 +1,38 @@
+/* Useful variables
+--------------------------------------------------------*/
+@mobile: ~"only screen and (min-device-width: 480px)";
+@tablet: ~"only screen and (min-device-width: 768px)";
+
+@landscape: ~"and (orientation: landscape)";
+@portrait: ~"and (orientation: portrait)";
+
+// Specific devices
+@iphone5: ~"only screen and (min-device-width: 320px) and (max-device-width: 568px)";
+@iphone4: ~"only screen and (min-device-width: 320px) and (max-device-width: 480px)";
+
+/* Shapes and sizing
+--------------------------------------------------------*/
+@defaultShapeBg: #000;
+
 .size(@width, @height) {
   height:@height;
   width:@width;
 }
 
-/* Shapes
---------------------------------------------------------*/
-.circle(@size, @bg:#000) {
+.circle(@size, @bg:@defaultShapeBg) {
   .size(@size, @size);
   .border-radius(@size);
   background:@bg;
 }
 
-.oval(@size, @bg:#000) {
+.oval(@size, @bg:@defaultShapeBg) {
   @half: @size / 2;
   .size(@size, @half);
   .border-radius("@{size} / @{half}");
   background:@bg;
 }
 
-.square(@size, @bg:#000) {
+.square(@size, @bg:@defaultShapeBg) {
   .size(@size, @size);
   background:@bg;
 }
