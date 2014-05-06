@@ -12,27 +12,27 @@
 
 /* Shapes and sizing
 --------------------------------------------------------*/
-@defaultShapeBg: #000;
+@default-bg: #000;
 
 .size(@width, @height) {
   height:@height;
   width:@width;
 }
 
-.circle(@size, @bg:@defaultShapeBg) {
+.circle(@size, @bg:@default-bg) {
   .size(@size, @size);
   .border-radius(@size);
   background:@bg;
 }
 
-.oval(@size, @bg:@defaultShapeBg) {
+.oval(@size, @bg:@default-bg) {
   @half: @size / 2;
   .size(@size, @half);
   .border-radius("@{size} / @{half}");
   background:@bg;
 }
 
-.square(@size, @bg:@defaultShapeBg) {
+.square(@size, @bg:@default-bg) {
   .size(@size, @size);
   background:@bg;
 }
@@ -42,6 +42,7 @@
  * @prop {value} - Property value
  */
 .appearance(@prop: none) {
+
   .prefix(appearance, @prop);
 }
 
@@ -175,7 +176,7 @@
   width:0;
 }
 
-.triangle(@direction, @size, @color) when (@direction = up), (@direction = down), (@direction = 'up'), (@direction = 'down') {
+.triangle(@direction, @size, @color:@default-bg) when (@direction = up), (@direction = down), (@direction = 'up'), (@direction = 'down') {
   @string: replace(~"@{direction}", "'","","g");
   @dir: ~`('@{string}' === 'up') ? 'bottom':'top'`;
 
@@ -186,7 +187,7 @@
   border-left: @size solid transparent;
 }
 
-.triangle(@direction, @size, @color) when (@direction = right), (@direction = left), (@direction = 'right'), (@direction = 'left') {
+.triangle(@direction, @size, @color:@default-bg) when (@direction = right), (@direction = left), (@direction = 'right'), (@direction = 'left') {
   @string: replace(~"@{direction}", "'","","g");
   @dir: ~`('@{string}' === 'left') ? 'right':'left'`;
   
@@ -204,7 +205,7 @@
  * @size {px} - Size of triangle
  * @color {hex, rgb} - Color of triangle
  */
-.triangle-corner(@direction1, @direction2, @size, @color) {
+.triangle-corner(@direction1, @direction2, @size, @color:@default-bg) {
   @string1: replace(~"@{direction1}", "'","","g");
   @string: replace(~"@{direction2}", "'","","g");
   @dir: ~`('@{string}' === 'right') ? 'left':'right'`;
