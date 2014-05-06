@@ -174,8 +174,9 @@
   width:0;
 }
 
-.triangle(@direction, @size, @color) when (@direction = up), (@direction = down) {
-  @dir: ~`('@{direction}' == 'up') ? 'bottom':'top'`;
+.triangle(@direction, @size, @color) when (@direction = up), (@direction = down), (@direction = 'up'), (@direction = 'down') {
+  @string: replace(~"@{direction}", "'","","g");
+  @dir: ~`('@{string}' === 'up') ? 'bottom':'top'`;
 
   .triangle-base();
   
@@ -184,8 +185,9 @@
   border-left: @size solid transparent;
 }
 
-.triangle(@direction, @size, @color) when (@direction = right), (@direction = left) {
-  @dir: ~`('@{direction}' == 'left') ? 'right':'left'`;
+.triangle(@direction, @size, @color) when (@direction = right), (@direction = left), (@direction = 'right'), (@direction = 'left') {
+  @string: replace(~"@{direction}", "'","","g");
+  @dir: ~`('@{string}' === 'left') ? 'right':'left'`;
   
   .triangle-base();
 
@@ -202,9 +204,13 @@
  * @color {hex, rgb} - Color of triangle
  */
 .triangle-corner(@direction1, @direction2, @size, @color) {
-  @dir: ~`(function(direction2) { if(direction2 === 'right') { return 'left'; } else { return 'right'; }})( '@{direction2}')`;
+  @string1: replace(~"@{direction1}", "'","","g");
+  @string: replace(~"@{direction2}", "'","","g");
+  @dir: ~`('@{string}' === 'right') ? 'left':'right'`;
+  
   .triangle-base();
-  border-@{direction1}: @size solid @color;
+
+  border-@{string1}: @size solid @color;
   border-@{dir}: @size solid transparent;
 }
 
