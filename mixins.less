@@ -149,7 +149,8 @@
  * @angle {deg} - Angle in degrees
  */
 .rotate(@angle) {
-  .prefix("transform", "rotate(@{angle})");
+  @a:unit(@angle);
+  .prefix("transform", "rotate(@{a}deg)");
 }
 
 /**
