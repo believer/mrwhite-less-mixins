@@ -175,16 +175,20 @@
 }
 
 .triangle(@direction, @size, @color) when (@direction = up), (@direction = down) {
-  @dir: ~`(function(direction) { if(direction === 'up') { return 'bottom'; } else { return 'top'; }})( '@{direction}')`;
+  @dir: ~`('@{direction}' == 'up') ? 'bottom':'top'`;
+
   .triangle-base();
+  
   border-right: @size solid transparent;
   border-@{dir}: @size solid @color;
   border-left: @size solid transparent;
 }
 
 .triangle(@direction, @size, @color) when (@direction = right), (@direction = left) {
-  @dir: ~`(function(direction) { if(direction === 'left') { return 'right'; } else { return 'left'; }})( '@{direction}')`;
+  @dir: ~`('@{direction}' == 'left') ? 'right':'left'`;
+  
   .triangle-base();
+
   border-top: @size solid transparent;
   border-bottom: @size solid transparent;
   border-@{dir}: @size solid @color;
