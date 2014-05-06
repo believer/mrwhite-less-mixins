@@ -98,8 +98,10 @@
  * @size {px} - Pixel size
  */
 .font-size(@size) {
-  @rem: (@size / 10);
-  font-size: ~"@{size}px";
+  @clean-size:unit(@size);
+  @rem: (@clean-size / 10);
+  
+  font-size: ~"@{clean-size}px";
   font-size: ~"@{rem}rem";
 }
 
