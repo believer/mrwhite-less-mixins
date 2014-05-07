@@ -138,10 +138,10 @@
  * @position1 {px} - Amount to move from direction1
  * @position2 {px} - Amount to move from direction2
  */
-.position(@direction1, @direction2, @position1:0, @position2:0) {
+.position(@direction1, @direction2, @position1:0, @position2:0, @positioning: absolute) {
   @{direction1}: @position1;
   @{direction2}: @position2;
-  position: absolute;
+  position: @positioning;
 }
 
 /**
