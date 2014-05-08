@@ -137,13 +137,22 @@
  * @direction2 {string} - Point to position element from
  * @position1 {px} - Amount to move from direction1
  * @position2 {px} - Amount to move from direction2
+ * @positioning {string} - Set positioning type
+ * @full {boolean} - Cover full width
  */
-.position(@direction1, @direction2, @position1:0, @position2:0, @positioning: absolute) {
+.position(@direction1, @direction2, @position1:0, @position2:0, @positioning: absolute, @full:false) when (@full = false) {
   @{direction1}: @position1;
   @{direction2}: @position2;
   position: @positioning;
 }
 
+.position(@direction1, @direction2, @position1:0, @position2:0, @positioning: absolute, @full:false) when (@full = true) {
+  .size(100%);
+
+  @{direction1}: @position1;
+  @{direction2}: @position2;
+  position: @positioning;
+}
 /**
  * Rotate element
  * @angle {deg} - Angle in degrees
