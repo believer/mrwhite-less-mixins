@@ -37,6 +37,13 @@
   background:@bg;
 }
 
+/* Columns
+--------------------------------------------------------*/
+.columns(@columns:2, @gap: 20px) {
+  .prefix(column-count, @columns);
+  .prefix(column-gap, @columns);
+}
+
 /**
  * Remove apperance of form elements
  * @prop {value} - Property value
