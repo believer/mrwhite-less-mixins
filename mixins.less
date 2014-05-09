@@ -103,13 +103,15 @@
 /**
  * Sets font-size in rem and px-fallback for IE8
  * @size {px} - Pixel size
+ * @style {string} - Font style
  */
-.font-size(@size) {
+.font-size(@size, @style:normal) {
   @clean-size:unit(@size);
   @rem: (@clean-size / 10);
   
   font-size: ~"@{clean-size}px";
   font-size: ~"@{rem}rem";
+  font-style: @style;
 }
 
 /**
