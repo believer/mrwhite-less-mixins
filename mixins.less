@@ -37,13 +37,6 @@
   background:@bg;
 }
 
-/* Columns
---------------------------------------------------------*/
-.columns(@columns:2, @gap: 20px) {
-  .prefix(column-count, @columns);
-  .prefix(column-gap, @columns);
-}
-
 /**
  * Remove apperance of form elements
  * @prop {value} - Property value
@@ -98,6 +91,16 @@
 .center(@coord) when (@coord = both) {
   .centered(-50%,-50%);
   .position(top, left, 50%, 50%);
+}
+
+/**
+ * Column layout
+ * @columns {int} - Number of columns
+ * @gap {px} - Gutter gap between columns
+ */
+.columns(@columns:2, @gap: 20px) {
+  .prefix(column-count, @columns);
+  .prefix(column-gap, @gap);
 }
 
 /**
