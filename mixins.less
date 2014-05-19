@@ -184,6 +184,16 @@
 }
 
 /**
+ * Adds transitions
+ * @type {string} - All or specific selector to transition
+ * @time {s} - Time of transition
+ * @animate {string} - Type of animation
+ */
+.transition(@type: all, @time: 300ms, @animate: ease) {
+  .prefix("transition", @type @time @animate);
+}
+
+/**
  * Make triangles
  * @direction {string} - Pointing direction (switches directions for it to point the right way)
  * @size {px} - Size of triangle 
@@ -234,14 +244,4 @@
 
   border-@{string1}: @size solid @color;
   border-@{dir}: @size solid transparent;
-}
-
-/**
- * Adds transitions
- * @type {string} - All or specific selector to transition
- * @time {s} - Time of transition
- * @animate {string} - Type of animation
- */
-.transition(@type: all, @time: 300ms, @animate: ease) {
-  .prefix("transition", @type @time @animate);
 }
