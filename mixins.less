@@ -152,7 +152,7 @@
  * @positioning {string} - Set positioning type
  * @full {boolean} - Cover full width
  */
-.position(@direction1, @direction2, @position1:0, @position2:0, @positioning: absolute, @full:false) when (@full = false) {
+.positioned(@direction1, @direction2, @position1:0, @position2:0, @positioning: absolute) {
   @dir1: replace(~"@{direction1}", "'","","g");
   @dir2: replace(~"@{direction2}", "'","","g");
 
@@ -161,14 +161,13 @@
   position: @positioning;
 }
 
-.position(@direction1, @direction2, @position1:0, @position2:0, @positioning: absolute, @full:false) when (@full = true) {
-  .size(100%);
-  @dir1: replace(~"@{direction1}", "'","","g");
-  @dir2: replace(~"@{direction2}", "'","","g");
+.position(@direction1, @direction2, @position1:0, @position2:0, @positioning: absolute, @full:false) when (@full = false) {
+  .positioned(@direction1, @direction2, @position1, @position2, @positioning);
+}
 
-  @{dir1}: @position1;
-  @{dir2}: @position2;
-  position: @positioning;
+.position(@direction1, @direction2, @position1:0, @position2:0, @positioning: absolute, @full:false) when (@full = true) {
+  .positioned(@direction1, @direction2, @position1, @position2, @positioning);
+  .size(100%);
 }
 
 /**
