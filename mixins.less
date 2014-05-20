@@ -130,7 +130,7 @@
  * @opacity {int} - Opacity in percentage
  */
 .opacity(@opacity) {
-  opacity: @opacity/100;
+  .prefix('opacity', (@opacity/100));
   filter:~"alpha(opacity=@{opacity})";
 }
 
