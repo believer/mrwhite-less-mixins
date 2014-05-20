@@ -258,3 +258,12 @@
   border-@{string1}: @size solid @color;
   border-@{dir}: @size solid transparent;
 }
+
+/**
+ * Ability to disable text highlighting
+ * @arg {string} - What is selectable
+ */
+.user-select(@arg: none) {
+  @argument: replace(~"@{arg}","'","","g");
+  .prefix('user-select', @argument);
+}
