@@ -175,8 +175,15 @@
  * @angle {deg} - Angle in degrees
  */
 .rotate(@angle) {
-  @a:unit(@angle);
-  .prefix("transform", "rotate(@{a}deg)");
+  .transform(rotate(@angle));
+}
+
+/**
+ * Scale an element
+ * @ratio {int} - Scale by integer
+ */
+.scale(@ratio) {
+  .transform(scale(@ratio));
 }
 
 /**
