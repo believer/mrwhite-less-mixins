@@ -155,10 +155,11 @@
 .positioned(@direction1, @direction2, @position1:0, @position2:0, @positioning: absolute) {
   @dir1: replace(~"@{direction1}", "'","","g");
   @dir2: replace(~"@{direction2}", "'","","g");
+  @pos: replace(~"@{positioning}", "'","","g");
 
   @{dir1}: @position1;
   @{dir2}: @position2;
-  position: @positioning;
+  position: @pos;
 }
 
 .position(@direction1, @direction2, @position1:0, @position2:0, @positioning: absolute, @full:false) when (@full = false) {
