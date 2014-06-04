@@ -141,11 +141,13 @@
  */
 .prefix(@property, @value) {
   @prop: replace(~"@{property}","'","","g");
-  -webkit-@{prop}: @value;
-     -moz-@{prop}: @value;
-      -ms-@{prop}: @value;
-       -o-@{prop}: @value;
-          @{prop}: @value;
+  @val: replace(~"@{value}","'","","g");
+
+  -webkit-@{prop}: @val;
+     -moz-@{prop}: @val;
+      -ms-@{prop}: @val;
+       -o-@{prop}: @val;
+          @{prop}: @val;
 }
 
 /**
