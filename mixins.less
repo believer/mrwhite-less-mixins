@@ -78,14 +78,16 @@
   .prefix(transform, "translateX(@{x}) translateY(@{y})");
 }
 
-.center(@coord, @x:0) when (@coord = x) {
+.center(@coord, @direction:top, @x:0) when (@coord = x) {
+  @dir: replace(~"@{direction}","'","","g");
   .centered(-50%,0);
-  .position(top, left, @x, 50%);
+  .position(@dir, left, @x, 50%);
 }
 
-.center(@coord, @y:0) when (@coord = y) {
+.center(@coord, @direction:left, @y:0) when (@coord = y) {
+  @dir: replace(~"@{direction}","'","","g");
   .centered(0,-50%);
-  .position(top, left, 50%, @y);
+  .position(top, @dir, 50%, @y);
 }
 
 .center(@coord) when (@coord = both) {
