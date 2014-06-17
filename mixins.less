@@ -80,16 +80,16 @@
   .prefix(transform, "translateX(@{x}) translateY(@{y})");
 }
 
-.center(@coord, @direction:top, @x:0) when (@coord = x) {
+.center(@coord, @direction:top, @y:0) when (@coord = x) {
   @dir: replace(~"@{direction}","'","","g");
   .centered(-50%,0);
-  .position(@dir, left, @x, 50%);
+  .position(@dir, left, @y, 50%);
 }
 
-.center(@coord, @direction:left, @y:0) when (@coord = y) {
+.center(@coord, @direction:left, @x:0) when (@coord = y) {
   @dir: replace(~"@{direction}","'","","g");
   .centered(0,-50%);
-  .position(top, @dir, 50%, @y);
+  .position(top, @dir, 50%, @x);
 }
 
 .center(@coord) when (@coord = both) {
@@ -98,7 +98,7 @@
 }
 
 /**
- * Column layout
+ * Column layoutb
  * @columns {int} - Number of columns
  * @gap {px} - Gutter gap between columns
  */
