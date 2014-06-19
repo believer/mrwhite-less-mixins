@@ -6,7 +6,7 @@ A collection of mixins for use with LESS. Originally constructed for use togethe
 ## Installation
 Install it using [Bower](http://bower.io) by running
 
-    bower install mrwhite-less-mixins --save-dev
+    bower install mrwhite-less-mixins --save
 
 on your command line.
 
