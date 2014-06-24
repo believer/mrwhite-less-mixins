@@ -3,3 +3,5 @@ Gruntfile.js
 app.less
 app.css
 package.json
+.jshintrc
+gulpfile.js
