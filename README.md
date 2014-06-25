@@ -10,7 +10,10 @@ Install it using [Bower](http://bower.io) by running
 
 on your command line.
 
-When the download is done, import `mixins.less` in to your project and use the mixins as suggested in the documentation above each mixin.
+When the download is done, import `mixins.less` in to your project.
+
+## Documentation
+Read the [full documentation](http://believer.github.io/) or read the short summary above each mixin in the file. 
 
 ## Contribute
 Please [create an issue](https://github.com/believer/mrwhite-less-mixins/issues) if you feel that something could be improved or submit a pull request.
