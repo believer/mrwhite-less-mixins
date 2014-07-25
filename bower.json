@@ -4,6 +4,9 @@
   "authors": [
     "Rickard Laurin <rickard.laurin@iteam.se>"
   ],
+  "ignore": [
+    ".gitignore"
+  ],
   "description": "A collection of mixins for use with LESS",
   "main": "mixins.less",
   "keywords": [
